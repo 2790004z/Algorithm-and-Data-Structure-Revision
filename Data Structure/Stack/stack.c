@@ -42,6 +42,13 @@ int get_stack_size(Stack_t* stack){
     return stack->top;
 }
 
+void print_stack(Stack_t* stack){
+    for (int i = stack->top-1; i >= 0; i--) {
+        printf("%d ", stack->bottom[i]);
+    }
+    printf("\n");
+}
+
 int main() {
     Stack_t stack;
     init_stack(&stack, 10);
@@ -49,9 +56,9 @@ int main() {
         push(&stack, i);
     }
     printf("Stack size: %d\n", get_stack_size(&stack));
-
+    print_stack(&stack);
     for (int i = 0; i < 10; ++i) {
-        printf("%d ", pop(&stack));
+        printf("%dth pop: %d\n", i+1, pop(&stack));
     }
     printf("\n");
     free_stack(&stack, 10);
